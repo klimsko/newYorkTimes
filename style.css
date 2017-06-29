@@ -1,0 +1,36 @@
+.well {
+	display: flex;
+	flex-direction: column;
+}
+.image {
+	margin-right: 0;
+	margin: auto;
+	margin-bottom: 19px;
+
+}
+h4 {
+	margin-top: 0;
+}
+.first_line>.well>.text_box>h4 {
+	font-size: 1.5em;
+}
+@media (min-width: 768px) {
+	.well {
+	    flex-direction: row;
+	}
+	.image {
+		margin: 0;
+		margin-right: 19px;
+	}
+	.second_line>.col-sm-3>.well, .third_line>.col-sm-4>.well, .forth_line>.col-sm-4>.well {
+		flex-direction: column;
+	}
+	.forth_line>.col-sm-4>.well>.text_box>.description {
+		display: none;
+	}
+	.second_line>.col-sm-3>.well>.image, .third_line>.col-sm-4>.well>.image, .forth_line>.col-sm-4>.well>.image {
+		margin-right: 0;
+		margin: auto;
+		margin-bottom: 19px;
+	}
+}
