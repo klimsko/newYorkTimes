@@ -1,5 +1,5 @@
 var $container = $('#articles'),
-    $first_line = $('<div>').addClass('first_line col-sm-9'),
+    $first_line = $('<div>').addClass('first_line'),
     $second_line = $('<div>').addClass('second_line row'),
     $third_line = $('<div>').addClass('third_line row'),
     $forth_line = $('<div>').addClass('forth_line row');
@@ -10,9 +10,9 @@ function Card(id, title, description, square320, thumbnail, normal, url, views, 
   this.id = id;
   this.title = title;
   this.description = description;
-  this.square320 = square320;
-  this.thumbnail = thumbnail;
-  this.normal = normal;
+  this.square320 = square320 || 'images/no-image.jpg';
+  this.thumbnail = thumbnail || 'images/no-image.jpg';
+  this.normal = normal || 'images/no-image.jpg';
   this.url = url;
   this.views = views;
   this.date = date;

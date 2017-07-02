@@ -8,8 +8,9 @@ function addScript(src){
   document.body.appendChild(script);
 }
 
-addScript('js/Sort.js');
+
 addScript('js/App.js');
+addScript('js/Sort.js');
 addScript('js/Card.js');
 
 })

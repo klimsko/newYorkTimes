@@ -4,6 +4,33 @@ var most_popular_api = '1d4264cd34b74feda722da8bb27b8788';
 var sections = {};
 var news = {};
 var url = 'https://api.nytimes.com/svc/mostpopular/v2/';
+var current_section;
+var days;
+
+$( document ).ready(function(){
+  getSections();
+  showArt('all-sections', setDays());
+})
+
+function getSections(){
+  let url = 'https://api.nytimes.com/svc/mostpopular/v2/viewed/sections.json';
+  getFromApi(url, most_popular_api);
+}
+
+$('.dropdown-menu li').click(function(event){
+  event.preventDefault();
+  let li_value = parseInt($(this)[0].innerText);
+  let num_days = setDays(li_value);
+  showArt(current_section, num_days);
+})
+
+function setDays(num){
+  if (num) {
+    days = num;
+  } else days = 30;
+
+  return days;
+}
 
 function getFromApi(url, api){
   url += '?' + $.param({
@@ -19,14 +46,8 @@ function getFromApi(url, api){
   }).fail(function(err) {
     throw err;
   });
-}
 
-$( document ).ready(function(){
-  let url = 'https://api.nytimes.com/svc/mostpopular/v2/viewed/sections.json';
-  getFromApi(url, most_popular_api);
-  url = 'https://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/30.json';
-  getFromApi(url, most_popular_api);
-})
+}
 
 function getValues(value){
     if (value[0].name != undefined){
@@ -59,7 +80,6 @@ function setupCards(cards) {
       }
       
       var card = new Card(key, cards[key].title, cards[key].abstract, img_square320, img_thumbnail, img_normal, cards[key].url, cards[key].views, date);
-      
     }
   }
 }

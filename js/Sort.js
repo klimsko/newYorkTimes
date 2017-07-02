@@ -9,9 +9,14 @@ function Sections(name){
 
 	this.$item.click(function(event){
 		event.preventDefault();
-		jQuery('#articles div').empty();
-		var current_url = url + '/mostviewed/' + '/' + self.name + '/' + '1.json';
-		getFromApi(current_url, most_popular_api);
-	})
+		showArt(self.name, setDays());
+	});
 }
 
+function showArt(name, num){
+	current_section = name;
+
+	jQuery('#articles div').empty();
+	let new_url = url + '/mostviewed/' + name + '/' + num + '.json';
+	getFromApi(new_url, most_popular_api);
+}
